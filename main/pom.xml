@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kaviddiss</groupId>
-    <artifactId>ubuntu1</artifactId>
+    <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
