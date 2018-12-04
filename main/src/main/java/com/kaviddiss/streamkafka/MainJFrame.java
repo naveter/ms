@@ -3,12 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kaviddiss.streamkafka.swing;
+package com.kaviddiss.streamkafka;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.awt.*;
 
 /**
  *
  * @author bass
  */
+@SpringBootApplication
 public class MainJFrame extends javax.swing.JFrame {
 
     /**
@@ -443,11 +450,12 @@ public class MainJFrame extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainJFrame().setVisible(true);
-            }
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(MainJFrame.class)
+                .headless(false).run(args);
+
+        EventQueue.invokeLater(() -> {
+            MainJFrame ex = ctx.getBean(MainJFrame.class);
+            ex.setVisible(true);
         });
     }
 
