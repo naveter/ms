@@ -26,4 +26,15 @@ sudo kafka_2.12-2.1.0/bin/kafka-console-producer.sh --broker-list 192.168.0.103:
 sudo kafka_2.12-2.1.0/bin/kafka-console-consumer.sh --bootstrap-server 192.168.0.103:9092 --topic testing --from-beginning
 
 
+sudo nano /etc/default/grub
+To disable GUI on boot, run:
+sudo systemctl set-default multi-user.target
+To enable GUI again issue the command:
+sudo systemctl set-default graphical.target
+To start Gnome session on a system without a current GUI just execute:
+sudo systemctl start gdm3.service
+
+http://localhost:8080/greetings?message=Hello,%20World!
+
+
 
