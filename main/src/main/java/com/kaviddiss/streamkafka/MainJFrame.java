@@ -5,6 +5,10 @@
  */
 package com.kaviddiss.streamkafka;
 
+import com.kaviddiss.streamkafka.model.User;
+import com.kaviddiss.streamkafka.service.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -15,14 +19,23 @@ import java.awt.*;
  *
  * @author bass
  */
+@Slf4j
 @SpringBootApplication
 public class MainJFrame extends javax.swing.JFrame {
+
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * Creates new form NewJFrame
      */
     public MainJFrame() {
         initComponents();
+    }
+
+    public void start() {
+        User user = this.userRepository.findById(1L);
+        log.info(user.toString());
     }
 
     /**
@@ -474,6 +487,7 @@ public class MainJFrame extends javax.swing.JFrame {
         EventQueue.invokeLater(() -> {
             MainJFrame ex = ctx.getBean(MainJFrame.class);
             ex.setVisible(true);
+            ex.start();
         });
     }
 
