@@ -7,6 +7,12 @@ sudo apt-get install pgadmin3
 sudo -u postgres psql
 ALTER USER postgres PASSWORD 'postgres';
 sudo /etc/init.d/postgresql restart
+create database ms;
+\c ms;
+\dt;
+\i ubuntu1.sql
+
+
 
 https://github.com/naveter/ms.git
 
