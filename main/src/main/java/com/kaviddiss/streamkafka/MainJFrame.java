@@ -34,7 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void start() {
-        User user = this.userRepository.findById(1L);
+        User user = this.userRepository.findOne(1L);
         log.info(user.toString());
     }
 
