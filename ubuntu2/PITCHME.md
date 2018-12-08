@@ -158,7 +158,7 @@ Notice the maven dependencies in the ```pom.xml``` file:
 ```
     <repository>
         <id>spring-milestones</id>
-        <name>Spring Milestones</name>
+        <title>Spring Milestones</title>
         <url>http://repo.spring.io/libs-milestone</url>
         <snapshots>
             <enabled>false</enabled>
