@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @Slf4j
 @SpringBootApplication
@@ -15,7 +17,7 @@ public class StreamKafkaApplication {
     private CategoryRepository categoryRepository;
 
     public StreamKafkaApplication() {
-        this.init();
+
     }
 
     public void init() {
@@ -24,6 +26,14 @@ public class StreamKafkaApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(StreamKafkaApplication.class, args);
+//        SpringApplication.run(StreamKafkaApplication.class, args);
+
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(StreamKafkaApplication.class)
+                .headless(false).run(args);
+
+        StreamKafkaApplication ex = ctx.getBean(StreamKafkaApplication.class);
+        ex.init();
+
     }
+
 }
