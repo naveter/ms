@@ -26,8 +26,6 @@ public class StreamKafkaApplication {
     }
 
     public static void main(String[] args) {
-//        SpringApplication.run(StreamKafkaApplication.class, args);
-
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(StreamKafkaApplication.class)
                 .headless(false).run(args);
 
