@@ -1,5 +1,7 @@
 package com.kaviddiss.streamkafka.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaviddiss.streamkafka.MainJFrame;
 import com.kaviddiss.streamkafka.model.CategoryDAO;
 import com.kaviddiss.streamkafka.model.Greetings;
@@ -60,13 +62,13 @@ public class GreetingsController {
         log.info(greetings.getMessage());
         mainJFrame.setCatInfo(greetings.getMessage());
 
-        if (greetings.getCode().equals(CODE_ERROR)) {
+        if (greetings.getCode() != null && greetings.getCode().equals(CODE_ERROR)) {
             // вывод ошибки в UI
 
 
         }
         else {
-            if (greetings.getCode().equals(CODE_DELETED)) {
+            if (greetings.getCode() != null && greetings.getCode().equals(CODE_DELETED)) {
                 // TODO: Тут поменять: в начале удалить ВСЕ статьи из категории, а уже затем саму категорию
             }
 
@@ -93,7 +95,7 @@ public class GreetingsController {
         log.info(greetings.getMessage());
         mainJFrame.setCatInfo(greetings.getMessage());
 
-        if (greetings.getCode().equals(CODE_ERROR)) {
+        if (greetings.getCode() != null && greetings.getCode().equals(CODE_ERROR)) {
             // вывод ошибки в UI
 
 
@@ -122,12 +124,16 @@ public class GreetingsController {
         log.info(greetings.getMessage());
         mainJFrame.setCatInfo(greetings.getMessage());
 
-        if (greetings.getCode().equals(CODE_ERROR)) {
+        if (greetings.getCode() != null && greetings.getCode().equals(CODE_ERROR)) {
             return;
         }
 
-        List<CategoryDAO> list = (List<CategoryDAO>)greetings.getObject();
-        list.stream().forEach(c -> log.info(c.toString()));
+        ObjectMapper mapper = new ObjectMapper();
+        List<CategoryDAO> list = mapper.convertValue((List<CategoryDAO>)greetings.getObject(), new TypeReference<List<CategoryDAO>>(){});
+
+        list.stream().forEach(c -> {
+            log.info(c.toString());
+        });
     }
 
 }
