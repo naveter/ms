@@ -5,7 +5,9 @@
  */
 package com.kaviddiss.streamkafka;
 
+import com.kaviddiss.streamkafka.model.CategoryDAO;
 import com.kaviddiss.streamkafka.model.User;
+import com.kaviddiss.streamkafka.service.GreetingsController;
 import com.kaviddiss.streamkafka.service.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class MainJFrame extends javax.swing.JFrame {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private GreetingsController greetingsController;
+
     /**
      * Creates new form NewJFrame
      */
@@ -36,6 +41,13 @@ public class MainJFrame extends javax.swing.JFrame {
     public void start() {
         User user = this.userRepository.findOne(1L);
         log.info(user.toString());
+    }
+
+    public void fillCatList(CategoryDAO cat) {
+        javax.swing.JPanel jPanelCatList = new javax.swing.JPanel();
+
+
+
     }
 
     /**
@@ -450,7 +462,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditArtActionPerformed
 
     private void jButtonCatLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCatLoadActionPerformed
-        // TODO add your handling code here:
+        this.greetingsController.getAllCat();
     }//GEN-LAST:event_jButtonCatLoadActionPerformed
 
     /**
@@ -489,6 +501,10 @@ public class MainJFrame extends javax.swing.JFrame {
             ex.setVisible(true);
             ex.start();
         });
+    }
+
+    public void setCatInfo(String message) {
+        this.jLabelCatInfo.setText(message);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

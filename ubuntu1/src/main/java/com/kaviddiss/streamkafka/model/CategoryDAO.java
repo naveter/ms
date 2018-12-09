@@ -13,5 +13,5 @@ import lombok.ToString;
 public class CategoryDAO {
     private Long id;
     private String name;
-    private Boolean delete;
+    private Boolean delete = new Boolean(false);
 }

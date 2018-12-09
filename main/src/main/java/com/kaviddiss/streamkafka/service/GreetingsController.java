@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import static com.kaviddiss.streamkafka.config.StreamsConfig.CAT_SERVICE;
 import static com.kaviddiss.streamkafka.config.StreamsConfig.CODE_DELETED;
 import static com.kaviddiss.streamkafka.config.StreamsConfig.CODE_ERROR;
@@ -56,6 +58,7 @@ public class GreetingsController {
      */
     public void createUpdateCat(Greetings greetings) {
         log.info(greetings.getMessage());
+        mainJFrame.setCatInfo(greetings.getMessage());
 
         if (greetings.getCode().equals(CODE_ERROR)) {
             // вывод ошибки в UI
@@ -88,6 +91,7 @@ public class GreetingsController {
 
     public void getCat(Greetings greetings) {
         log.info(greetings.getMessage());
+        mainJFrame.setCatInfo(greetings.getMessage());
 
         if (greetings.getCode().equals(CODE_ERROR)) {
             // вывод ошибки в UI
@@ -102,6 +106,9 @@ public class GreetingsController {
 
     public void getAllCat() {
         log.info("getAllCat");
+        mainJFrame.setCatInfo("Загружаю все категории...");
+
+        // TODO: Затереть существующие категории
 
         Greetings greetings = Greetings.builder()
                 .sname(CAT_SERVICE)
@@ -113,16 +120,14 @@ public class GreetingsController {
 
     public void getAllCat(Greetings greetings) {
         log.info(greetings.getMessage());
+        mainJFrame.setCatInfo(greetings.getMessage());
 
         if (greetings.getCode().equals(CODE_ERROR)) {
-            // вывод ошибки в UI
-
-
+            return;
         }
-        else {
 
-
-        }
+        List<CategoryDAO> list = (List<CategoryDAO>)greetings.getObject();
+        list.stream().forEach(c -> log.info(c.toString()));
     }
 
 }

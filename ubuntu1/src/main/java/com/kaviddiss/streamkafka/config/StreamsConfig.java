@@ -10,6 +10,7 @@ public class StreamsConfig {
     public final static String ART_SERVICE = "artService";
     public final static String MAIN_SERVICE = "mainService";
 
+    public final static String CODE_SUCCESS = "codeSuccess";
     public final static String CODE_ERROR = "codeError";
     public final static String CODE_UPDATED = "codeUpdated";
     public final static String CODE_ADDED = "codeAdded";

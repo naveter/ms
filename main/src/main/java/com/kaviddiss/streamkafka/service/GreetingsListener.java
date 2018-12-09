@@ -21,11 +21,11 @@ public class GreetingsListener {
 
     @StreamListener(GreetingsStreams.INPUT)
     public void handleGreetings(@Payload Greetings greetings) {
-        log.info("Received greetings: {}", greetings);
-
         if (!greetings.getSname().equals(MAIN_SERVICE)) {
             return;
         }
+
+        log.info("Received greetings: {}", greetings);
 
         switch(greetings.getMname()) {
             case "createUpdateCat":
