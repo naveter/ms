@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -43,9 +44,77 @@ public class MainJFrame extends javax.swing.JFrame {
         log.info(user.toString());
     }
 
-    public void fillCatList(CategoryDAO cat) {
-        javax.swing.JPanel jPanelCatList = new javax.swing.JPanel();
+    public void fillCatList(java.util.List<CategoryDAO> categories) {
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanelCatList);
+        jPanelCatList.setLayout(jPanel6Layout);
 
+        GroupLayout.ParallelGroup pgHoriz = jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING);
+        pgHoriz.addComponent(jPanelAllCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+
+        GroupLayout.SequentialGroup sgVert = jPanel6Layout.createSequentialGroup();
+        sgVert.addContainerGap()
+              .addComponent(jPanelAllCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
+
+        for (CategoryDAO cat : categories) {
+            JPanel jPanelCat = new javax.swing.JPanel();
+            JLabel jLabelListCatId = new javax.swing.JLabel();
+            JLabel jLabelListCatName = new javax.swing.JLabel();
+            JLabel jLabelListCatEdit = new javax.swing.JLabel();
+            JLabel jLabelListCatDelete = new javax.swing.JLabel();
+
+            jLabelListCatId.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+            jLabelListCatId.setText(cat.getId().toString());
+
+            jLabelListCatName.setText("<HTML><FONT color='#000099'><U>" + cat.getName() + "</U></FONT></HTML>");
+            jLabelListCatName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+            jLabelListCatEdit.setText("<HTML><FONT color='#000099'><U>e</U></FONT></HTML>");
+            jLabelListCatEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+            jLabelListCatDelete.setText("<HTML><FONT color='#000099'><U>d</U></FONT></HTML>");
+            jLabelListCatDelete.setToolTipText("");
+            jLabelListCatDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+            javax.swing.GroupLayout jPanelCatListLayout = new javax.swing.GroupLayout(jPanelCat);
+            jPanelCat.setLayout(jPanelCatListLayout);
+            jPanelCatListLayout.setHorizontalGroup(
+                    jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCatListLayout.createSequentialGroup()
+                                    .addComponent(jLabelListCatId)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabelListCatName, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                    .addContainerGap())
+            );
+            jPanelCatListLayout.setVerticalGroup(
+                    jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelListCatId)
+                                    .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelListCatName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            );
+
+            pgHoriz.addComponent(jPanelCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+            sgVert.addComponent(jPanelCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE);
+
+        }
+
+        jPanel6Layout.setHorizontalGroup(
+                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(pgHoriz)
+                                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(sgVert.addContainerGap(520, Short.MAX_VALUE))
+        );
 
 
     }
@@ -62,14 +131,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jLabelAllCategories = new javax.swing.JLabel();
         jPanelCatList = new javax.swing.JPanel();
-        jLabelListCatId = new javax.swing.JLabel();
-        jLabelListCatName = new javax.swing.JLabel();
-        jLabelListCatEdit = new javax.swing.JLabel();
-        jLabelListCatDelete = new javax.swing.JLabel();
+        jPanelAllCategories = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jTextFieldCatId = new javax.swing.JTextField();
         jLabelCatId = new javax.swing.JLabel();
@@ -99,20 +162,21 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextPaneArtBody = new javax.swing.JTextPane();
         jButtonEditArt = new javax.swing.JButton();
         jLabelArtInfo = new javax.swing.JLabel();
+        jLabelAllCategories = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel7.setForeground(new java.awt.Color(51, 51, 255));
+        jPanelAllCategories.setForeground(new java.awt.Color(51, 51, 255));
 
         jLabelAllCategories.setForeground(new java.awt.Color(51, 51, 255));
         jLabelAllCategories.setText("<HTML><FONT color='#000099'><U>All Categories</U></FONT></HTML>");
         jLabelAllCategories.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanelAllCategories);
+        jPanelAllCategories.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
                 jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel7Layout.createSequentialGroup()
@@ -124,66 +188,27 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jLabelAllCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jLabelListCatId.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabelListCatId.setText("12");
-
-        jLabelListCatName.setText("<HTML><FONT color='#000099'><U>First category</U></FONT></HTML>");
-        jLabelListCatName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabelListCatEdit.setText("<HTML><FONT color='#000099'><U>e</U></FONT></HTML>");
-        jLabelListCatEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabelListCatDelete.setText("<HTML><FONT color='#000099'><U>d</U></FONT></HTML>");
-        jLabelListCatDelete.setToolTipText("");
-        jLabelListCatDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout jPanelCatListLayout = new javax.swing.GroupLayout(jPanelCatList);
-        jPanelCatList.setLayout(jPanelCatListLayout);
-        jPanelCatListLayout.setHorizontalGroup(
-                jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelCatListLayout.createSequentialGroup()
-                                .addComponent(jLabelListCatId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelListCatName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelCatListLayout.setVerticalGroup(
-                jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelCatListLayout.createSequentialGroup()
-                                .addGroup(jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabelListCatId)
-                                        .addComponent(jLabelListCatName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 11, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanelCatList);
+        jPanelCatList.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
                 jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanelCatList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jPanelAllCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        )
                                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
                 jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanelAllCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanelCatList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(520, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(jPanel6);
+        jScrollPane1.setViewportView(jPanelCatList);
 
         jLabelCatId.setText("Cat ID:");
 
@@ -526,19 +551,14 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelListArtData;
     private javax.swing.JLabel jLabelListArtId;
     private javax.swing.JLabel jLabelListArtTitle;
-    private javax.swing.JLabel jLabelListCatDelete;
-    private javax.swing.JLabel jLabelListCatEdit;
-    private javax.swing.JLabel jLabelListCatId;
-    private javax.swing.JLabel jLabelListCatName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelCatList;
+    private javax.swing.JPanel jPanelAllCategories;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanelArtList;
-    private javax.swing.JPanel jPanelCatList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
