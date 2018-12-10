@@ -17,6 +17,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  *
@@ -45,6 +47,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void fillCatList(java.util.List<CategoryDAO> categories) {
+        jPanelCatList.removeAll();
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanelCatList);
         jPanelCatList.setLayout(jPanel6Layout);
 
@@ -68,16 +71,41 @@ public class MainJFrame extends javax.swing.JFrame {
 
             jLabelListCatName.setText("<HTML><FONT color='#000099'><U>" + cat.getName() + "</U></FONT></HTML>");
             jLabelListCatName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            jLabelListCatName.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    super.mouseClicked(e);
+
+                    log.info("show all articles from " + cat.getName());
+                }
+            });
 
             jLabelListCatEdit.setText("<HTML><FONT color='#000099'><U>e</U></FONT></HTML>");
             jLabelListCatEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            jLabelListCatEdit.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    super.mouseClicked(e);
+
+                    log.info("edit category " + cat.getName());
+                }
+            });
 
             jLabelListCatDelete.setText("<HTML><FONT color='#000099'><U>d</U></FONT></HTML>");
             jLabelListCatDelete.setToolTipText("");
             jLabelListCatDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            jLabelListCatDelete.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    super.mouseClicked(e);
+
+                    log.info("delete category " + cat.getName());
+                }
+            });
 
             javax.swing.GroupLayout jPanelCatListLayout = new javax.swing.GroupLayout(jPanelCat);
             jPanelCat.setLayout(jPanelCatListLayout);
+
             jPanelCatListLayout.setHorizontalGroup(
                     jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelCatListLayout.createSequentialGroup()
@@ -100,7 +128,8 @@ public class MainJFrame extends javax.swing.JFrame {
             );
 
             pgHoriz.addComponent(jPanelCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
-            sgVert.addComponent(jPanelCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE);
+            sgVert.addComponent(jPanelCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
 
         }
 
@@ -113,10 +142,10 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
                 jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(sgVert.addContainerGap(520, Short.MAX_VALUE))
+                        .addGroup(sgVert)
         );
 
-
+//        pack();
     }
 
     /**
@@ -174,6 +203,14 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabelAllCategories.setForeground(new java.awt.Color(51, 51, 255));
         jLabelAllCategories.setText("<HTML><FONT color='#000099'><U>All Categories</U></FONT></HTML>");
         jLabelAllCategories.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelAllCategories.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                log.info("show articles from all categories");
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanelAllCategories);
         jPanelAllCategories.setLayout(jPanel7Layout);
