@@ -172,7 +172,7 @@ public class GreetingsController {
         Greetings greetings = Greetings.builder()
                 .sname(MAIN_SERVICE)
                 .mname("deleteAllArticlesFromCategory")
-                .message("Удалено " + count + " статей категории " + cat)
+                .message("Удалено " + count + " статей категории " + cat.getName())
                 .object(cat)
                 .build();
 

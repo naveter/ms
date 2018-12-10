@@ -37,6 +37,7 @@ public class GreetingsController {
      */
     public void deleteAllArticlesFromCategory(Greetings greetings) {
         log.info("deleteAllArticlesFromCategory");
+        mainJFrame.setArtInfo(greetings.getMessage());
         CategoryDAO cat = mapper.convertValue(greetings.getObject(), CategoryDAO.class);
 
         Greetings greetings2 = Greetings.builder()

@@ -230,7 +230,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         return;
                     }
 
-                    greetingsController.createUpdateCat(cat.getId(), null, true);
+                    greetingsController.createUpdateCat(cat.getId(), cat.getName(), true);
 
                     log.info("delete category " + cat.getName());
                 }

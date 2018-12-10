@@ -18,7 +18,6 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
 
     @Modifying
     @Transactional
-//    @Query("delete from User u where u.active = false")
     Long deleteArticleByCatId(Long catId);
 
 }
