@@ -33,6 +33,8 @@ public class GreetingsController {
                 .object(art)
                 .build();
 
+        // TODO: Тут нужно проверять существует ли указанная категория
+
         if (art.getId() != null) {
             Article a = articleRepository.findOne(art.getId());
             if(a == null) {
@@ -146,7 +148,6 @@ public class GreetingsController {
         List<Article> findAllList = articleRepository.findByCatId(catId);
 
         if (findAllList.isEmpty()) {
-            greetings.setCode(CODE_ERROR);
             greetings.setMessage("Нет ни одной статьи из категории " + catId);
         }
         else {

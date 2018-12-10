@@ -84,6 +84,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jLabelListArtCatId.setText(art.getCatId().toString());
 
             jLabelListArtEdit.setText("<HTML><FONT color='#000099'><U>edit</U></FONT></HTML>");
+            jLabelListArtEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabelListArtEdit.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -99,10 +100,15 @@ public class MainJFrame extends javax.swing.JFrame {
             });
 
             jLabelListArtDelete.setText("<HTML><FONT color='#000099'><U>delete</U></FONT></HTML>");
+            jLabelListArtDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             jLabelListArtDelete.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
+
+                    if (!showConfirmDialog("Подтвердите удаление статьи '" + art.getTitle()  + "'")) {
+                        return;
+                    }
 
                     greetingsController.createUpdateArt(art.getId(), art.getCatId(), art.getUserId(), art.getTitle(), art.getBody(), true);
 
@@ -157,7 +163,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
             pg.addComponent(jPanelArtList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
             sg.addComponent(jPanelArtList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE);
-            sg.addGap(0, 333, Short.MAX_VALUE);
+            sg.addGap(0, 10, Short.MAX_VALUE);
         }
 
         jPanel8Layout.setHorizontalGroup(pg);
@@ -173,12 +179,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanelCatList.setLayout(jPanel6Layout);
 
         GroupLayout.ParallelGroup pgHoriz = jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING);
-        pgHoriz.addComponent(jPanelAllCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
-
         GroupLayout.SequentialGroup sgVert = jPanel6Layout.createSequentialGroup();
-        sgVert.addContainerGap()
-              .addComponent(jPanelAllCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-              .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
 
         for (final CategoryDAO cat : categories) {
             JPanel jPanelCat = new javax.swing.JPanel();
@@ -196,6 +197,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
+
+                    greetingsController.getArtFromCat(cat.getId());
 
                     log.info("show all articles from " + cat.getName());
                 }
@@ -222,6 +225,10 @@ public class MainJFrame extends javax.swing.JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
+
+                    if (!showConfirmDialog("Подтвердите удаление категории '" + cat.getName()  + "'")) {
+                        return;
+                    }
 
                     greetingsController.createUpdateCat(cat.getId(), null, true);
 
@@ -259,13 +266,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         }
 
-        jPanel6Layout.setHorizontalGroup(
-                jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pgHoriz)
-                                .addContainerGap())
-        );
+        pgHoriz.addComponent(jPanelAllCategories, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE);
+        sgVert.addComponent(jPanelAllCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
+
+        jPanel6Layout.setHorizontalGroup(pgHoriz);
         jPanel6Layout.setVerticalGroup(
                 jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(sgVert)
@@ -326,6 +331,8 @@ public class MainJFrame extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+                greetingsController.getAllArt();
 
                 log.info("show articles from all categories");
             }
@@ -668,6 +675,14 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextFieldArtCatId.setText("");
         jTextFieldArtTitle.setText("");
         jTextPaneArtBody.setText("");
+    }
+
+    public boolean showConfirmDialog(String message) {
+        int dialogResult = JOptionPane.showConfirmDialog(this, message, "Подтверждение", JOptionPane.YES_NO_OPTION);
+        if(dialogResult == 0) {
+            return true;
+        }
+        return false;
     }
 
     public void clearArtList() {
