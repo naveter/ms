@@ -41,16 +41,16 @@ public class GreetingsListener {
                 greetingsController.getAllCat(greetings);
                 break;
             case "createUpdateArt":
-//                greetingsController.getAllCat(greetings);
+                greetingsController.createUpdateArt(greetings);
                 break;
             case "getArt":
-//                greetingsController.getAllCat(greetings);
+                greetingsController.getArt(greetings);
                 break;
             case "getAllArt":
-//                greetingsController.getAllCat(greetings);
+                greetingsController.getAllArt(greetings);
                 break;
             case "getArtFromCat":
-//                greetingsController.getAllCat(greetings);
+                greetingsController.getArtFromCat(greetings);
                 break;
             default:
                 log.info("Unknown mname!");

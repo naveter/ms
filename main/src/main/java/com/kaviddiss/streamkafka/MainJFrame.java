@@ -5,6 +5,7 @@
  */
 package com.kaviddiss.streamkafka;
 
+import com.kaviddiss.streamkafka.model.ArticleDAO;
 import com.kaviddiss.streamkafka.model.CategoryDAO;
 import com.kaviddiss.streamkafka.model.User;
 import com.kaviddiss.streamkafka.service.GreetingsController;
@@ -44,6 +45,10 @@ public class MainJFrame extends javax.swing.JFrame {
     public void start() {
         User user = this.userRepository.findOne(1L);
         log.info(user.toString());
+    }
+
+    public void fillArtList(java.util.List<ArticleDAO> articles) {
+
     }
 
     public void fillCatList(java.util.List<CategoryDAO> categories) {
@@ -595,7 +600,11 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void setCatInfo(String message) {
-        this.jLabelCatInfo.setText(message);
+        jLabelCatInfo.setText(message);
+    }
+
+    public void setArtInfo(String message) {
+        jLabelArtInfo.setText(message);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
