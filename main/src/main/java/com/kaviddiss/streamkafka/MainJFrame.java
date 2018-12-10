@@ -59,7 +59,7 @@ public class MainJFrame extends javax.swing.JFrame {
               .addComponent(jPanelAllCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
 
-        for (CategoryDAO cat : categories) {
+        for (final CategoryDAO cat : categories) {
             JPanel jPanelCat = new javax.swing.JPanel();
             JLabel jLabelListCatId = new javax.swing.JLabel();
             JLabel jLabelListCatName = new javax.swing.JLabel();
@@ -87,6 +87,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
 
+                    jTextFieldCatId.setText(cat.getId().toString());
+                    jTextFieldCatName.setText(cat.getName());
+
                     log.info("edit category " + cat.getName());
                 }
             });
@@ -98,6 +101,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
+
+                    greetingsController.createUpdateCat(cat.getId(), null, true);
 
                     log.info("delete category " + cat.getName());
                 }
@@ -576,6 +581,17 @@ public class MainJFrame extends javax.swing.JFrame {
     public void clearCatForm() {
         jTextFieldCatId.setText("");
         jTextFieldCatName.setText("");
+    }
+
+    public void clearArtForm() {
+        jTextFieldArtId.setText("");
+        jTextFieldArtCatId.setText("");
+        jTextFieldArtTitle.setText("");
+        jTextPaneArtBody.setText("");
+    }
+
+    public void clearArtList() {
+
     }
 
     public void setCatInfo(String message) {

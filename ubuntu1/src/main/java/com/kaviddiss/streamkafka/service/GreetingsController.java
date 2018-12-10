@@ -38,7 +38,6 @@ public class GreetingsController {
                 greetings.setMessage("Указанной категории не существует");
             }
             else if (cat.getDelete().equals(true)) {
-                // TODO: Кто будет удалять записи и возможность транзакционности
                 categoryRepository.delete(c);
                 greetings.setCode(CODE_DELETED);
                 greetings.setMessage("Категория удалена");

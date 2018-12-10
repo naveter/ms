@@ -11,9 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.kaviddiss.streamkafka.config.StreamsConfig.CAT_SERVICE;
-import static com.kaviddiss.streamkafka.config.StreamsConfig.CODE_DELETED;
-import static com.kaviddiss.streamkafka.config.StreamsConfig.CODE_ERROR;
+import static com.kaviddiss.streamkafka.config.StreamsConfig.*;
 
 @Service
 @Slf4j
@@ -28,6 +26,26 @@ public class GreetingsController {
     @Autowired
     private MainJFrame mainJFrame;
 
+    private ObjectMapper mapper = new ObjectMapper();
+
+    /**
+     * Сообщение от Article что все статьи указанной категории удалены
+     *
+     * @param greetings
+     */
+    public void deleteAllArticlesFromCategory(Greetings greetings) {
+        log.info("deleteAllArticlesFromCategory");
+        CategoryDAO cat = mapper.convertValue(greetings.getObject(), CategoryDAO.class);
+
+        Greetings greetings2 = Greetings.builder()
+                .sname(CAT_SERVICE)
+                .mname("createUpdateCat")
+                .object(cat)
+                .build();
+
+        greetingsService.sendGreeting(greetings2);
+    }
+
     /**
      * Создание\обновление категории
      *
@@ -37,12 +55,23 @@ public class GreetingsController {
     public void createUpdateCat(Long id, String name, Boolean delete) {
         log.info("createUpdateCat");
         CategoryDAO cat = CategoryDAO.builder().id(id).name(name).delete(delete).build();
+        Greetings greetings;
 
-        Greetings greetings = Greetings.builder()
-            .sname(CAT_SERVICE)
-            .mname("createUpdateCat")
-            .object(cat)
-            .build();
+        // TODO: В начале удалить все статьи с данной категорией, запрос к Articles
+        if (delete.equals(true)) {
+            greetings = Greetings.builder()
+                    .sname(ART_SERVICE)
+                    .mname("deleteAllArticlesFromCategory")
+                    .object(cat)
+                    .build();
+        }
+        else {
+            greetings = Greetings.builder()
+                    .sname(CAT_SERVICE)
+                    .mname("createUpdateCat")
+                    .object(cat)
+                    .build();
+        }
 
         greetingsService.sendGreeting(greetings);
     }
@@ -60,8 +89,9 @@ public class GreetingsController {
             return;
         }
 
+        // Очистить список статей
         if (greetings.getCode() != null && greetings.getCode().equals(CODE_DELETED)) {
-            // TODO: Тут поменять: в начале удалить ВСЕ статьи из категории, а уже затем саму категорию
+            mainJFrame.clearArtList();
         }
 
         mainJFrame.clearCatForm();

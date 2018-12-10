@@ -31,6 +31,9 @@ public class GreetingsListener {
             case "createUpdateCat":
                 greetingsController.createUpdateCat(greetings);
                 break;
+            case "deleteAllArticlesFromCategory":
+                greetingsController.deleteAllArticlesFromCategory(greetings);
+                break;
             case "getCat":
                 greetingsController.getCat(greetings);
                 break;
