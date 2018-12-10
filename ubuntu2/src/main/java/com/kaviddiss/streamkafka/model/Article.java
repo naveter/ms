@@ -14,12 +14,12 @@ public class Article {
     private Long id;
 
     @NotNull
-    @Column(name="user_id")
-    private Long user_id;
+    @Column(name="userId")
+    private Long userId;
 
     @NotNull
-    @Column(name="cat_id")
-    private Long cat_id;
+    @Column(name="catId")
+    private Long catId;
 
     @NotNull
     @Column(name="title")
@@ -41,20 +41,20 @@ public class Article {
         this.id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getCat_id() {
-        return cat_id;
+    public Long getCatId() {
+        return catId;
     }
 
-    public void setCat_id(Long cat_id) {
-        this.cat_id = cat_id;
+    public void setCatId(Long catId) {
+        this.catId = catId;
     }
 
     public String getTitle() {
@@ -102,7 +102,7 @@ public class Article {
         String classname = s[s.length - 1];
 
         return classname + " id=" + id.toString() + ", " + "title=" + title
-                + ", catId=" + cat_id + ", userId=" + user_id;
+                + ", catId=" + catId + ", userId=" + userId;
     }
 
 }

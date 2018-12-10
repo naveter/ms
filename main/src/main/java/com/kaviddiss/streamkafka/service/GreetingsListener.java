@@ -40,6 +40,18 @@ public class GreetingsListener {
             case "getAllCat":
                 greetingsController.getAllCat(greetings);
                 break;
+            case "createUpdateArt":
+//                greetingsController.getAllCat(greetings);
+                break;
+            case "getArt":
+//                greetingsController.getAllCat(greetings);
+                break;
+            case "getAllArt":
+//                greetingsController.getAllCat(greetings);
+                break;
+            case "getArtFromCat":
+//                greetingsController.getAllCat(greetings);
+                break;
             default:
                 log.info("Unknown mname!");
                 break;
