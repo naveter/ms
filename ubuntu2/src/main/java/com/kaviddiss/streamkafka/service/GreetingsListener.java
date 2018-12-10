@@ -2,6 +2,7 @@ package com.kaviddiss.streamkafka.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaviddiss.streamkafka.model.ArticleDAO;
+import com.kaviddiss.streamkafka.model.CategoryDAO;
 import com.kaviddiss.streamkafka.model.Greetings;
 import com.kaviddiss.streamkafka.stream.GreetingsStreams;
 import lombok.extern.slf4j.Slf4j;
@@ -44,6 +45,10 @@ public class GreetingsListener {
             case "getArtFromCat":
                 Long id2 = mapper.convertValue(greetings.getObject(), Long.class);
                 greetingsController.getArtFromCat(id2);
+                break;
+            case "deleteAllArticlesFromCategory":
+                CategoryDAO cat = mapper.convertValue(greetings.getObject(), CategoryDAO.class);
+                greetingsController.deleteAllArticlesFromCategory(cat);
                 break;
             default:
                 log.info("Unknown mname!");

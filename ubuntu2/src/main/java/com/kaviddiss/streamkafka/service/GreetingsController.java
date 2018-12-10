@@ -2,6 +2,7 @@ package com.kaviddiss.streamkafka.service;
 
 import com.kaviddiss.streamkafka.model.Article;
 import com.kaviddiss.streamkafka.model.ArticleDAO;
+import com.kaviddiss.streamkafka.model.CategoryDAO;
 import com.kaviddiss.streamkafka.model.Greetings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,6 +159,23 @@ public class GreetingsController {
 
         greetingsService.sendGreeting(greetings);
         log.info(greetings.getMessage());
+    }
+
+    public void deleteAllArticlesFromCategory(CategoryDAO cat) {
+        log.info("deleteAllArticlesFromCategory");
+        if (cat == null) {
+            return;
+        }
+
+        Long count = articleRepository.deleteArticleByCatId(cat.getId());
+        Greetings greetings = Greetings.builder()
+                .sname(MAIN_SERVICE)
+                .mname("deleteAllArticlesFromCategory")
+                .message("Удалено " + count + " статей категории " + cat)
+                .object(cat)
+                .build();
+
+        greetingsService.sendGreeting(greetings);
     }
 
 }

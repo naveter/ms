@@ -31,6 +31,7 @@ public class GreetingsController {
 
     /**
      * Сообщение от Article что все статьи указанной категории удалены
+     * и что можно послать запрос на удаление категории
      *
      * @param greetings
      */
@@ -58,7 +59,6 @@ public class GreetingsController {
         CategoryDAO cat = CategoryDAO.builder().id(id).name(name).delete(delete).build();
         Greetings greetings;
 
-        // TODO: В начале удалить все статьи с данной категорией, запрос к Articles
         if (delete.equals(true)) {
             greetings = Greetings.builder()
                     .sname(ART_SERVICE)

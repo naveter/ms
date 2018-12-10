@@ -55,6 +55,8 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabelListArtCatName = new javax.swing.JLabel();
         jLabelListArtBody = new javax.swing.JLabel();
         jLabelListArtCatId = new javax.swing.JLabel();
+        jLabelListArtEdit = new javax.swing.JLabel();
+        jLabelListArtDelete = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabelArtId = new javax.swing.JLabel();
         jLabelArtCatId = new javax.swing.JLabel();
@@ -252,6 +254,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabelListArtCatId.setText("23");
 
+        jLabelListArtEdit.setText("<HTML><FONT color='#000099'><U>edit</U></FONT></HTML>");
+
+        jLabelListArtDelete.setText("<HTML><FONT color='#000099'><U>delete</U></FONT></HTML>");
+
         javax.swing.GroupLayout jPanelArtListLayout = new javax.swing.GroupLayout(jPanelArtList);
         jPanelArtList.setLayout(jPanelArtListLayout);
         jPanelArtListLayout.setHorizontalGroup(
@@ -269,7 +275,11 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelListArtCatName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelListArtCatId)))
+                        .addComponent(jLabelListArtCatId))
+                    .addGroup(jPanelArtListLayout.createSequentialGroup()
+                        .addComponent(jLabelListArtEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelListArtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelArtListLayout.setVerticalGroup(
@@ -285,8 +295,12 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(jLabelListArtCatName)
                     .addComponent(jLabelListArtCatId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelListArtBody)
-                .addContainerGap())
+                .addComponent(jLabelListArtBody, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelArtListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelListArtEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelListArtDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -299,7 +313,7 @@ public class MainJFrame extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jPanelArtList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 358, Short.MAX_VALUE))
+                .addGap(0, 333, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(jPanel8);
@@ -484,6 +498,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelListArtCatId;
     private javax.swing.JLabel jLabelListArtCatName;
     private javax.swing.JLabel jLabelListArtData;
+    private javax.swing.JLabel jLabelListArtDelete;
+    private javax.swing.JLabel jLabelListArtEdit;
     private javax.swing.JLabel jLabelListArtId;
     private javax.swing.JLabel jLabelListArtTitle;
     private javax.swing.JLabel jLabelListCatDelete;

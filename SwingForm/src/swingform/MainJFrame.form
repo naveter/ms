@@ -350,7 +350,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanelArtList" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="358" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="333" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -361,7 +361,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelListArtBody" min="-2" pref="502" max="-2" attributes="0"/>
@@ -376,6 +376,11 @@
                                       <Component id="jLabelListArtCatName" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabelListArtCatId" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabelListArtEdit" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabelListArtDelete" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -396,9 +401,14 @@
                                   <Component id="jLabelListArtCatName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabelListArtCatId" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelListArtBody" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabelListArtBody" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabelListArtEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelListArtDelete" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -439,6 +449,16 @@
                     <Component class="javax.swing.JLabel" name="jLabelListArtCatId">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="23"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabelListArtEdit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&lt;FONT color=&apos;#000099&apos;&gt;&lt;U&gt;edit&lt;/U&gt;&lt;/FONT&gt;&lt;/HTML&gt;"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabelListArtDelete">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="&lt;HTML&gt;&lt;FONT color=&apos;#000099&apos;&gt;&lt;U&gt;delete&lt;/U&gt;&lt;/FONT&gt;&lt;/HTML&gt;"/>
                       </Properties>
                     </Component>
                   </SubComponents>
