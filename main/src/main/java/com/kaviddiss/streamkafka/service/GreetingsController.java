@@ -57,20 +57,15 @@ public class GreetingsController {
         mainJFrame.setCatInfo(greetings.getMessage());
 
         if (greetings.getCode() != null && greetings.getCode().equals(CODE_ERROR)) {
-            // вывод ошибки в UI
-
-
-        }
-        else {
-            if (greetings.getCode() != null && greetings.getCode().equals(CODE_DELETED)) {
-                // TODO: Тут поменять: в начале удалить ВСЕ статьи из категории, а уже затем саму категорию
-            }
-
-            // обновить UI
-
-
+            return;
         }
 
+        if (greetings.getCode() != null && greetings.getCode().equals(CODE_DELETED)) {
+            // TODO: Тут поменять: в начале удалить ВСЕ статьи из категории, а уже затем саму категорию
+        }
+
+        mainJFrame.clearCatForm();
+        this.getAllCat();
     }
 
     public void getCat(Long id) {
@@ -90,21 +85,13 @@ public class GreetingsController {
         mainJFrame.setCatInfo(greetings.getMessage());
 
         if (greetings.getCode() != null && greetings.getCode().equals(CODE_ERROR)) {
-            // вывод ошибки в UI
-
-
-        }
-        else {
-
-
+            return;
         }
     }
 
     public void getAllCat() {
         log.info("getAllCat");
         mainJFrame.setCatInfo("Загружаю все категории...");
-
-        // TODO: Затереть существующие категории
 
         Greetings greetings = Greetings.builder()
                 .sname(CAT_SERVICE)

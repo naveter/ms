@@ -516,7 +516,15 @@ public class MainJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCatEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCatEditActionPerformed
-        // TODO add your handling code here:
+        Long id = null;
+        if (!jTextFieldCatId.getText().isEmpty()) {
+            id = Long.decode(jTextFieldCatId.getText());
+        }
+        if(jTextFieldCatName.getText().isEmpty()) {
+            this.setCatInfo("Не указано название категории");
+            return;
+        }
+        this.greetingsController.createUpdateCat(id, jTextFieldCatName.getText(), false);
     }//GEN-LAST:event_jButtonCatEditActionPerformed
 
     private void jButtonEditArtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditArtActionPerformed
@@ -563,6 +571,11 @@ public class MainJFrame extends javax.swing.JFrame {
             ex.setVisible(true);
             ex.start();
         });
+    }
+
+    public void clearCatForm() {
+        jTextFieldCatId.setText("");
+        jTextFieldCatName.setText("");
     }
 
     public void setCatInfo(String message) {

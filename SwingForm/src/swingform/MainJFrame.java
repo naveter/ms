@@ -35,9 +35,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabelAllCategories = new javax.swing.JLabel();
         jPanelCatList = new javax.swing.JPanel();
         jLabelListCatId = new javax.swing.JLabel();
-        jLabelListCatName = new javax.swing.JLabel();
         jLabelListCatEdit = new javax.swing.JLabel();
         jLabelListCatDelete = new javax.swing.JLabel();
+        jLabelListCatName = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jTextFieldCatId = new javax.swing.JTextField();
         jLabelCatId = new javax.swing.JLabel();
@@ -95,15 +95,15 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabelListCatId.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelListCatId.setText("12");
 
-        jLabelListCatName.setText("<HTML><FONT color='#000099'><U>First category</U></FONT></HTML>");
-        jLabelListCatName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jLabelListCatEdit.setText("<HTML><FONT color='#000099'><U>e</U></FONT></HTML>");
         jLabelListCatEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabelListCatDelete.setText("<HTML><FONT color='#000099'><U>d</U></FONT></HTML>");
         jLabelListCatDelete.setToolTipText("");
         jLabelListCatDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabelListCatName.setText("<HTML><FONT color='#000099'><U>First category</U></FONT></HTML>");
+        jLabelListCatName.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanelCatListLayout = new javax.swing.GroupLayout(jPanelCatList);
         jPanelCatList.setLayout(jPanelCatListLayout);
@@ -112,22 +112,20 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanelCatListLayout.createSequentialGroup()
                 .addComponent(jLabelListCatId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelListCatName, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelListCatName, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanelCatListLayout.setVerticalGroup(
             jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCatListLayout.createSequentialGroup()
-                .addGroup(jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelListCatId)
-                    .addComponent(jLabelListCatName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addGroup(jPanelCatListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabelListCatId)
+                .addComponent(jLabelListCatEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelListCatDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelListCatName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -148,7 +146,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelCatList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(520, Short.MAX_VALUE))
+                .addContainerGap(531, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel6);
@@ -411,7 +409,7 @@ public class MainJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

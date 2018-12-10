@@ -1,5 +1,6 @@
 package com.kaviddiss.streamkafka.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaviddiss.streamkafka.model.CategoryDAO;
 import com.kaviddiss.streamkafka.model.Greetings;
 import com.kaviddiss.streamkafka.stream.GreetingsStreams;
@@ -18,6 +19,8 @@ public class GreetingsListener {
     @Autowired
     private GreetingsController greetingsController;
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     @StreamListener(GreetingsStreams.INPUT)
     public void handleGreetings(@Payload Greetings greetings) {
         if (!greetings.getSname().equals(CAT_SERVICE)) {
@@ -28,10 +31,12 @@ public class GreetingsListener {
 
         switch(greetings.getMname()) {
             case "createUpdateCat":
-                greetingsController.createUpdateCat((CategoryDAO)greetings.getObject());
+                CategoryDAO cat = mapper.convertValue(greetings.getObject(), CategoryDAO.class);
+                greetingsController.createUpdateCat(cat);
                 break;
             case "getCat":
-                greetingsController.getCat((Long)greetings.getObject());
+                Long id = mapper.convertValue(greetings.getObject(), Long.class);
+                greetingsController.getCat(id);
                 break;
             case "getAllCat":
                 greetingsController.getAllCat();
